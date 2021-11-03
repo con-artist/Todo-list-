@@ -1,0 +1,14 @@
+{
+  "name": "todo_list_app",
+  "version": "1.0.0",
+  "description": "This is a Todo list app made using express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rajat singh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
