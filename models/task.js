@@ -13,9 +13,13 @@ const taskShema = new mongoose.Schema({
   },
   date: {
     type: Date,
+    default: 'Others',
     // required: true,
   },
 });
+
+
+
 const Task = mongoose.model("Task", taskShema);
 
 

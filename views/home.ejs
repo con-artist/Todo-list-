@@ -1,80 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Griffy&family=Henny+Penny&family=Pacifico&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/2a4b295587.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    
-    <h1 class="app-heading"><i class="fas fa-clipboard-list">&nbsp;</i>TODO&nbsp;App</h1>
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Griffy&family=Henny+Penny&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/2a4b295587.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1 class="app-heading">
+      <i class="fas fa-clipboard-list">&nbsp;</i>TODO&nbsp;App
+    </h1>
     <div class="app-design">
       <div class="task-discription">
-        <form action="/create-task" method="post" >
-            <div class="discription-box">
-                <label for="discription" class="details-heading">DESCRIPTION</label>
-                <textarea name="description" id="discription"  placeholder="What do u need to do ?" required></textarea>
+        <form action="/create-task" method="post">
+          <div class="discription-box">
+            <label for="discription" class="details-heading">DESCRIPTION</label>
+            <textarea
+              name="description"
+              id="discription"
+              placeholder="What do u need to do ?"
+              required
+            ></textarea>
+          </div>
+          <div class="category-date-box">
+            <div class="category-box">
+              <label for="category" class="details-heading">CATEGORY</label>
+              <!-- <input list="categories" name="category" id="category-input" placeholder="Choose a Category"> -->
+              <select id="category-input" name="category">
+                <option value="" disabled selected  style="color: rgb(181, 181, 184)" >  Choose category </option>
+                <option value="Personal">Personal</option>
+                <option value="School">School</option>
+                <option value="Work">Work</option>
+                <option value="Cleaning">Cleaning</option>
+                <option value="Others">Others</option>
+              </select>
             </div>
-            <div class="category-date-box">
-                <div class="category-box">
-                    <label for="category" class="details-heading">CATEGORY</label>
-                    <!-- <input list="categories" name="category" id="category-input" placeholder="Choose a Category"> -->
-                    <select id="category-input" name="category" >
-                        <option value="" disabled selected style="color:rgb(181, 181, 184);">Choose category</option>
-                        <option value="Personal">Personal</option>
-                        <option value="School">School</option>
-                        <option value="Work">Work</option>
-                        <option value="Cleaning">Cleaning</option>
-                        <option value="Others">Others</option>
-                        </select>
-
-                </div>
-                <div class="date-box">
-                    <label for="date" class="details-heading">DUE DATE</label>
-                    <input type="text" name="date" id="due-date" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')">
-                </div>
+            <div class="date-box">
+              <label for="date" class="details-heading">DUE DATE</label>
+              <input type="text" required name="date" id="due-date" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')" />
             </div>
+          </div>
 
-            <div class="button-box">
-                <button type="submit" id="add-task"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD TASK</button>
-                <button type="submit" formaction="/delete-task" id="delete-task"><i class="far fa-trash-alt" ></i>&nbsp;DELETE TASKS</button>
-            </div>
-
-
+          <div class="button-box">
+            <button type="submit" id="add-task">
+              <i class="fas fa-plus"></i>&nbsp;&nbsp;ADD TASK
+            </button>
+            <button type="submit" form="delete-form" id="delete-task">
+              <i class="far fa-trash-alt"></i>&nbsp;DELETE TASKS
+            </button>
+          </div>
         </form>
-
       </div>
 
       <div class="tasks-display">
-          <div class="task-pending-heading">
-              Task-to-do <span class="no-of-tasks-left">0</span>
-          </div>
+        <div class="task-pending-heading">
+          Tasks-to-do <span class="no-of-tasks-left"><%= count%></span>
+        </div>
 
-          <div class="tasks-to-do">
+        <div class="tasks-to-do">
+          <form action="/delete-task" id="delete-form" method="get">
             <ul id="task-items">
-                <% for(let i of task) {%>
-                    <li class="cards">
-                        <p class="taskdiscription"><%= i.discription %></p>
-                        <p class="task-category"><%= i.category %></p>
-                        <p class="task-date"><%= i.date %></p>
-                    </li>
-    
-                   
-    
-                    <%}%>
+              <% for(let i of task) { %>
+
+              <li id="task-info" class="cardss" >
+                <input
+                  type="checkbox"
+                  name="<%= i._id %>"
+                  style="cursor: pointer"
+                />
+                <div id="task-description"><p><%= i.description %></p></div>
+                <div id="duedate">
+                  <p>
+                    <i class="fas fa-calendar-alt"></i> <%=
+                    i.date.toDateString() %>
+                  </p>
+                </div>
+                <div id="task-category" class="categories">
+                  <p><%= i.category %></p>
+                </div>
+              </li>
+              <% } %>
             </ul>
-              
-          </div>
-
+          </form>
+        </div>
       </div>
-   </div>
+    </div>
 
-    <script src="/js/home.js"></script>
-</body>
+    <script type="text/javascript" src="/js/home.js"></script>
+  </body>
 </html>

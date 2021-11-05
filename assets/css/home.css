@@ -1,5 +1,6 @@
+
 body{
-    background-color: #fffeea;
+    background-color: #dbfff8;
 
 }
 
@@ -88,6 +89,8 @@ form {
     padding-bottom: 3px;
 }
 
+
+
 .category-box::after {
     content: "";
     background: rgb(2, 2, 2);
@@ -147,6 +150,7 @@ option:hover{
 
 #add-task{
     padding: 12px 9px;
+    border-radius: 3px;
     margin: 4px;
     font-size: 12px;
     background-color: rgb(68,68,68);
@@ -163,6 +167,7 @@ option:hover{
 
 #delete-task{
     padding: 12px 7px;
+    border-radius: 3px;
     margin: 4px;
     font-size: 12px;
     width: 117px;
@@ -186,22 +191,26 @@ option:hover{
 
 .tasks-display{
     margin-left: 30px;
-    width: 2%;
+    width: 65%;
 
 }
 
 .task-pending-heading{
     margin-left: 55px;
     font-weight: 600;
-    width: 130px;
+    width: 145px;
     font-family: 'Architects Daughter', cursive;
     font-size: 20px;
     display: flex;
     align-items:center;
+    border-style: solid;
+    border-width: 0px 0px 0.5px 0px;
+    border-color: black;
+    padding-bottom: 5px;
 }
 
 .no-of-tasks-left {
-    background-color: rgb(68,68,68);
+    background-color: rgb(248, 52, 52);
     color: white;
     border-radius: 50%;
     width: 15px;
@@ -215,3 +224,78 @@ option:hover{
     padding: 1px;
     margin-left: 5px;
 }
+
+.tasks-to-do{
+    width: 100%;
+    height: 65vh;
+    overflow-y: scroll;
+    margin-top: 20px;
+}
+
+.tasks-to-do::-webkit-scrollbar {
+    display: none;
+  }
+
+#task-items{
+    list-style-type: none;
+    width: 90%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+#task-info {
+    height: inherit;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "YouTube Noto", Roboto, Arial, Helvetica, sans-serif;
+    color: black;
+    font-weight: 600;
+    position: relative;
+    border-style: solid;
+    border-width: 0px 0px 0.5px 0px ;
+    border-color: lightgrey;
+    box-shadow: rgb(0 0 0 / 5%) 0px 15px 113px, rgb(0 0 0 / 10%) 0px 5px 10px;
+    background-color: #fcf9f9;
+    border-radius: 5px;
+
+}
+
+
+
+#task-description {
+    width: 305px;
+    position: relative;
+    height: auto;
+    right: 50px;
+    font-size: 18px;
+    font-family: monospace;
+    
+}
+
+#duedate{
+   color: rgb(146, 152, 155);
+   width: 150px;
+}
+
+.fa-calendar-alt{
+    color: rgb(80, 79, 79);
+}
+
+#task-category {
+    width: 90px;
+    /* text-align: center; */
+    height: 40px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+    /* background-color: red; */
+    align-items: center;
+    font-family: 'Architects Daughter';
+    
+}
+
