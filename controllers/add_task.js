@@ -1,9 +1,11 @@
 const  Task  = require('../models/task');
 
+//  controller fot creating new Tasks
+
 module.exports.newtask = function (req, res) {
     console.log(req.body);
 
-   if(typeof(req.body.category)=="undefined"){
+   if(typeof(req.body.category)=="undefined"){    // setting default value for category
      req.body.category="Others";
    }
     

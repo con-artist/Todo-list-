@@ -5,39 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
-    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/home.css" />       
     <link rel="stylesheet" href="/css/responsive.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Griffy&family=Henny+Penny&family=Pacifico&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/2a4b295587.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Griffy&family=Henny+Penny&family=Pacifico&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/2a4b295587.js" crossorigin="anonymous" ></script>
   </head>
   <body>
-    <h1 class="app-heading">
-      <i class="fas fa-clipboard-list">&nbsp;</i>TODO&nbsp;App
+    <h1 class="app-heading animate__animated animate__zoomIn" >
+      <i class="fas fa-clipboard-list" >&nbsp;</i>TODO&nbsp;App  <!---- heading of the project-->
     </h1>
     <div class="app-design">
       <div class="task-discription">
-        <form action="/create-task" method="post">
-          <div class="discription-box">
+        <form action="/create-task" method="post">  <!---- form for creating new task-->
+          <div class="discription-box">      <!---- write the discription of the task-->
             <label for="discription" class="details-heading">DESCRIPTION</label>
-            <textarea
-              name="description"
-              id="discription"
-              placeholder="What do u need to do ?"
-              required
-            ></textarea>
+            <textarea name="description" id="discription"  placeholder="What do u need to do ?" required ></textarea> 
           </div>
           <div class="category-date-box">
             <div class="category-box">
-              <label for="category" class="details-heading">CATEGORY</label>
-              <!-- <input list="categories" name="category" id="category-input" placeholder="Choose a Category"> -->
+              <label for="category" class="details-heading">CATEGORY</label>   <!---- choose category from dropdown-->
               <select id="category-input" name="category">
                 <option value="" disabled selected  style="color: rgb(181, 181, 184)" >  Choose category </option>
                 <option value="Personal">Personal</option>
@@ -48,17 +37,17 @@
               </select>
             </div>
             <div class="date-box">
-              <label for="date" class="details-heading">DUE DATE</label>
+              <label for="date" class="details-heading">DUE DATE</label>  <!---- choose date from calender-->
               <input type="text" required name="date" id="due-date" placeholder="MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')" />
             </div>
           </div>
 
           <div class="button-box">
             <button type="submit" id="add-task">
-              <i class="fas fa-plus"></i>&nbsp;&nbsp;ADD TASK
+              <i class="fas fa-plus"></i>&nbsp;&nbsp;ADD TASK   <!---- button for submitting to create task form-->
             </button>
             <button type="submit" form="delete-form" id="delete-task">
-              <i class="far fa-trash-alt"></i>&nbsp;DELETE TASKS
+              <i class="far fa-trash-alt"></i>&nbsp;DELETE TASKS  <!---- button for submitting to delete task form-->
             </button>
           </div>
         </form>
@@ -66,26 +55,19 @@
 
       <div class="tasks-display">
         <div class="task-pending-heading">
-          Tasks-to-do <span class="no-of-tasks-left"><%= count%></span>
+          Tasks-to-do <span class="no-of-tasks-left"><%= count%></span>  <!---- button for submitting to create task form-->
         </div>
 
         <div class="tasks-to-do">
-          <form action="/delete-task" id="delete-form" method="get">
+          <form action="/delete-task" id="delete-form" method="get">   <!----form to delete task-->
             <ul id="task-items">
               <% for(let i of task) { %>
 
               <li id="task-info" class="cardss" >
-                <input
-                  type="checkbox"
-                  name="<%= i._id %>"
-                  style="cursor: pointer"
-                />
+                <input type="checkbox" name="<%= i._id %>" style="cursor: pointer" />
                 <div id="task-description"><p><%= i.description %></p></div>
                 <div id="duedate">
-                  <p>
-                    <i class="fas fa-calendar-alt"></i> <%=
-                    i.date.toDateString() %>
-                  </p>
+                  <p> <i class="fas fa-calendar-alt"></i> <%= i.date.toDateString() %>  </p>
                 </div>
                 <div id="task-category" class="categories">
                   <p><%= i.category %></p>

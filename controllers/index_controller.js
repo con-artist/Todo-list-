@@ -1,29 +1,28 @@
 // controller for the home page
 const Task = require("../models/task");
-var count_entries = 0;
+var count_entries = 0;   // number of tasks in database
 
-module.exports.home = function (req, res) {
-  console.log("route called");
+module.exports.home = function (req, res) {        // controller for the home page
 
-  Task.countDocuments({}, function (err, count) {
+  console.log("route called");          
+
+  Task.countDocuments({}, function (err, count) {  // count number of documents in the database
     if (err) {
       console.log("error in counting: ", err);
     }
-    console.log(count);
     count_entries = count;
     
     
   });
 
   
-  Task.find({}, function (err, task) {
+  Task.find({}, function (err, task) {               //redering the home page
     if (err) {
       console.log("Error in fetching tasks from db");
       return;
     }
-    console.log("function ran first");
-
-    return res.render("home", {
+    
+    return res.render("home", {                        
       title: "Todo list app",
       task: task,
       count: count_entries,

@@ -1,6 +1,8 @@
 const  Task  = require('../models/task');
 
+// conrtoller for deleting Tasks
 module.exports.deletetask = function (req, res) {
+    // getting the id from the query
     var id = req.query;
 
     // checking the number of tasks selected to delete
